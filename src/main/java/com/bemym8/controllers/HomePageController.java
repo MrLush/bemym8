@@ -12,4 +12,9 @@ public class HomePageController {
         model.addAttribute("title","Home page");
         return "home";
     }
+    @GetMapping("/login")
+    public String loginPage(Model model){
+        model.addAttribute("title","Login");
+        return "login";
+    }
 }
