@@ -9,6 +9,7 @@ public class HomePageController {
 
     @GetMapping("/")
     public String homePage(Model model){
-        return "hello";
+        model.addAttribute("title","Home page");
+        return "home";
     }
 }
