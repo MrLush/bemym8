@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title th:text="${title}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+            crossorigin="anonymous"></script>
+    <link href="css/body.css" rel="stylesheet">
+</head>
+<div th:insert="blocks/header :: header"></div>
+<body class="bg-light">
+    <main class="ms-sm-auto p-4">
+        <h1>Projects</h1>
+        <div class="shadow p-3 mb-5 bg-white rounded">
+            <h2>Name of some great project</h2>
+            <p class="lead">Some anons text example here, for what that project was created</p>
+            <a href="/" class="btn btn-lg btn-primary">About The Project »</a>
+        </div>
+        <div class="shadow p-3 mb-5 bg-white rounded">
+            <h2>And here another marvelous project</h2>
+            <p class="lead">Some anons text example here, for what that project was created</p>
+            <a href="/" class="btn btn-lg btn-primary">About The Project »</a>
+        </div>
+    </main>
+</body>
+</html>

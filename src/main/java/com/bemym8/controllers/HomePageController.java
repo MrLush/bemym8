@@ -12,20 +12,16 @@ public class HomePageController {
         model.addAttribute("title","BeMyM8 - Home page");
         return "home";
     }
-    @GetMapping("/carousel.css")
-    public String carouselCss(){
-        return "css/carousel.css";
-    }
 
     @GetMapping("/login")
     public String loginPage(Model model){
-        model.addAttribute("title","Login");
+        model.addAttribute("title","BeMyM8 - Login");
         return "login";
     }
 
     @GetMapping("/registration")
     public String registrationPage(Model model){
-        model.addAttribute("title","Registration");
+        model.addAttribute("title","BeMyM8 - Registration");
         return "registration";
     }
 }
