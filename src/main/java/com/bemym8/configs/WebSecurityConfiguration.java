@@ -59,7 +59,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
-                .antMatchers("/resources/**", "/resources/static/**","/static/**", "/css/**", "/js/**", "/images/**","/assets/**","/fonts/**");
+                .antMatchers("/resources/**","/static/**", "/css/**", "/js/**", "/images/**","/assets/**","/fonts/**");
     }
 
     @Override
@@ -77,7 +77,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-
+/*
     @Bean
     @Override
     public UserDetailsService userDetailsService() {
@@ -90,5 +90,5 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         return new InMemoryUserDetailsManager(user);
     }
-
+*/
 }
