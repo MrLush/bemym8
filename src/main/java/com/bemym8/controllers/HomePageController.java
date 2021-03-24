@@ -19,9 +19,4 @@ public class HomePageController {
         return "login";
     }
 
-    @GetMapping("/registration")
-    public String registrationPage(Model model){
-        model.addAttribute("title","BeMyM8 - Registration");
-        return "registration";
-    }
 }
