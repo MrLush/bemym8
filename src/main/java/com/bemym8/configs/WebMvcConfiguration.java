@@ -14,11 +14,4 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("login");
     }
-
-    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-            registry
-                    .addResourceHandler("/resources/**")
-                    .addResourceLocations("/resources/");
-    }
-
 }
