@@ -3,7 +3,7 @@ package com.bemym8.configs;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
-
+/*
 @Configuration
 public class WebConfiguration extends WebMvcConfigurationSupport {
 
@@ -12,4 +12,5 @@ public class WebConfiguration extends WebMvcConfigurationSupport {
         registry.addResourceHandler("/**")
                 .addResourceLocations("classpath:/static/");
     }
-}
+
+}   */
