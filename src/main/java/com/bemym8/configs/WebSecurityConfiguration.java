@@ -40,6 +40,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/","/projects","/community","/registration").permitAll()
+                .antMatchers("/resources/**", "/css/**", "/js/**", "/images/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -53,7 +54,15 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .csrf().disable();
 
     }
-
+/*
+    //this method allows static resources to be neglected by spring security
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web
+                .ignoring()
+                .antMatchers("/resources/**", "/css/**", "/js/**", "/images/**","/assets/**","/fonts/**");
+    }
+*/
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication()
