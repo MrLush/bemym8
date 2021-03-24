@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
+/*
 @Configuration
 @Import({ WebSecurityConfiguration.class })
 public class WebMvcConfiguration implements WebMvcConfigurer {
@@ -21,3 +21,4 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
         registry.addViewController("/login").setViewName("login");
     }
 }
+*/
