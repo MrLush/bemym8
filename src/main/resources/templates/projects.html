@@ -23,8 +23,8 @@
         <div th:each="el : ${project}" class="shadow p-3 mb-5 bg-white rounded">
             <div sec:authorize="hasAuthority('USER')">
                 <div class="float-right">
-                    <a th:href="'/projects/' + ${el.Id} + '/edit'" class="btn btn-warning btn-sm mb-1">Edit</a><br>
-                    <form method="POST" th:action="'/projects/' + ${el.Id} + '/remove'">
+                    <a th:href="'/projects/' + ${el.id} + '/edit'" class="btn btn-warning btn-sm mb-1">Edit</a><br>
+                    <form method="POST" th:action="'/projects/' + ${el.id} + '/remove'">
                         <button type=submit class="btn btn-danger btn-sm mb-1">Delete</button>
                     </form>
                 </div>
