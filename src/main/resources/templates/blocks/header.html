@@ -22,7 +22,7 @@
                 </form>
                 <div sec:authorize="isAuthenticated()">
                     <h5 th:inline="text" class="align-items-center fs-4 text-dark mb-0 px-1" >[[${#httpServletRequest.remoteUser}]]</h5>
-                    <span sec:authentication="principal.username"></span>
+                    <!--<span sec:authentication="principal.username"></span>-->
                 </div>
                 <div sec:authorize="!isAuthenticated()">
                     <a class="p-2 text-dark" href="/registration">Join now</a>
