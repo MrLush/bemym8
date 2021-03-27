@@ -35,13 +35,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
     }
-/*
-    @Bean
-    public PasswordEncoder getPasswordEncoder(){
-        return new BCryptPasswordEncoder(8);
-    }*/
-
-
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -68,7 +61,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(authenticationProvider())
                 .jdbcAuthentication()
                 .dataSource(dataSource)
-                //TODO change encoder, this is legacy and only for testing
                 .usersByUsernameQuery("SELECT username, password, active FROM usr WHERE username=?")
                 .authoritiesByUsernameQuery("SELECT u.username, ur.roles FROM usr u INNER JOIN user_role ur ON u.id=ur.user_id WHERE u.username=?");
     }
@@ -77,12 +69,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     public UserDetailsService userDetailsService() {
         return new UserDetailsWrapperService();
     }
-/*
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-*/
+
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -91,6 +78,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         authProvider.setPasswordEncoder(encoder());
         return authProvider;
     }
-    
+
 
 }

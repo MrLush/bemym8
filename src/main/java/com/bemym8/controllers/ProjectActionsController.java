@@ -13,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+
 @Controller
 @PreAuthorize("hasAuthority('USER')")
 public class ProjectActionsController {
@@ -28,14 +30,12 @@ public class ProjectActionsController {
     }
 
     @PostMapping("/projects/add")
-    public String addProjectSubmit(@RequestParam String title, @RequestParam String shortDescription, @RequestParam String body, Model model, Project project) {
+    public String addProjectSubmit(@RequestParam String title, @RequestParam String shortDescription, @RequestParam String body, Model model, Project project, @AuthenticationPrincipal UserDetailsWrapper user) {
         System.out.println("Title is " + project.getTitle());
         System.out.println("Short Description is " + project.getShortDescription());
         System.out.println("Body is " + project.getBody());
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println("Author is " + auth.getName());
-        //TODO change it
-        project.setAuthorId(10);
+        System.out.println("Author is " + user.getId());
+        project.setAuthorId(user.getId());
         projectRepository.save(project);
         System.out.println("New project was successfully added");
         return "redirect:/projects";
