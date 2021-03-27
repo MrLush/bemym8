@@ -20,7 +20,7 @@ public class UserDetailsWrapper implements UserDetails {
     }
 
     public Long getId() {
-        return this.user.getId();
+        return id;
     }
 
 
