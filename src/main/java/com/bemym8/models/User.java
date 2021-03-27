@@ -27,9 +27,9 @@ public class User {
     public void setId(Long id) {
         this.id = id;
     }
-
-    public String getUsername() {
-        return username;
+//TODO change it
+    public Long getUsername() {
+        return id;
     }
 
     public void setUsername(String username) {
