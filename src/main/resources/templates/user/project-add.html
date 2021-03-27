@@ -21,8 +21,7 @@
                     <div class="col-md-9">
                         <div sec:authorize="isAuthenticated()">
                             Authenticated as <span sec:authentication="name"></span>
-                            User ID is <span sec:authentication.getPrincipal().getId()></span>
-                            <div th:text="${#authorization.getPrincipal().getId()}">1</div>
+                            User ID is <span sec:authentication="principal.Id"></span>
 
                         </div>
                         <input type="text" name="title" th:field="*{title}" placeholder="Enter name of your project" class="form-control"><br>
