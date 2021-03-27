@@ -1,15 +1,11 @@
 package com.bemym8.models;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.Set;
 
 @Entity
 @Table(name = "usr")
-public class User implements UserDetails {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -62,32 +58,5 @@ public class User implements UserDetails {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return active;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return active;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return active;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return active;
-    }
-
-
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles;
     }
 }
