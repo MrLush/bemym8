@@ -13,9 +13,10 @@ import java.util.Set;
 
 public class UserDetailsWrapper implements UserDetails {
     private User user;
-
+    private Long id;
     public UserDetailsWrapper(User user){
         this.user = user;
+        this.id = user.getId();
     }
 
     public Long getId() {
