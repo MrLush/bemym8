@@ -19,6 +19,14 @@ public class Project {
     @Column(columnDefinition = "TEXT")
     private String body;
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public long getAuthorId() {
         return authorId;
     }
