@@ -11,6 +11,9 @@ public class Project {
     private long authorId;
 
     private String title;
+
+    private String shortDescription;
+
     //TEXT because we want that datatype in postgres
     @Column(columnDefinition = "TEXT")
     private String body;
@@ -29,6 +32,14 @@ public class Project {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getShortDescription() {
+        return shortDescription;
+    }
+
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
     }
 
     public String getBody() {

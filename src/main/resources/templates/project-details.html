@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title th:text="${project.title}"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -16,6 +16,8 @@
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <div class="shadow-sm p-3 mb-5 bg-white rounded">
             <h1 th:text="${project.title}"/>
+            <h3 th:text="${project.author}"/>
+            <div th:utext=${project.shortDescription} />
             <div th:utext=${project.body} />
             <a th:href="'/projects'" class="btn btn-secondary btn-sm">Назад</a>
         </div>

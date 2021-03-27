@@ -30,6 +30,6 @@ public class ProjectsController {
         }
         Project project = projectRepository.findById(id).orElseThrow(IllegalStateException::new);
         model.addAttribute("project", project);
-        return "projects-details";
+        return "project-details";
     }
 }

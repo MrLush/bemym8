@@ -23,8 +23,9 @@ public class ProjectActionsController {
     }
 
     @PostMapping("/projects/add")
-    public String addProjectSubmit(@RequestParam String title, @RequestParam String body, Model model, Project project, User user) {
+    public String addProjectSubmit(@RequestParam String title, @RequestParam String shortDescription, @RequestParam String body, Model model, Project project, User user) {
         System.out.println("Title is " + project.getTitle());
+        System.out.println("Short Description is " + project.getShortDescription());
         System.out.println("Body is " + project.getBody());
         System.out.println("Author is " + user.getId());
         project.setAuthorId(user.getId());
@@ -39,17 +40,18 @@ public class ProjectActionsController {
     public String projectEdit(@PathVariable(value = "id") long id, Model model){
         Project project = projectRepository.findById(id).orElseThrow(IllegalStateException::new);
         model.addAttribute("project", project);
-        return "admin/blog-edit";
+        return "user/project-edit";
     }
     @PostMapping("/projects/{id}/edit")
-    public String projectEditSubmit(@PathVariable(value = "id") long id, @RequestParam String title, @RequestParam String body, Model model){
+    public String projectEditSubmit(@PathVariable(value = "id") long id, @RequestParam String title, @RequestParam String shortDescription, @RequestParam String body, Model model){
         Project project = projectRepository.findById(id).orElseThrow(IllegalStateException::new);
         project.setTitle(title);
+        project.setShortDescription(shortDescription);
         project.setBody(body);
         projectRepository.save(project);
         model.addAttribute("title", "Editing project");
         System.out.println("project was successfully edited");
-        return "redirect:/blog/{id}";
+        return "redirect:/projects/{id}";
     }
 
     @PostMapping("/projects/{id}/remove")
@@ -61,7 +63,7 @@ public class ProjectActionsController {
         Project project = projectRepository.findById(id).orElseThrow(IllegalStateException::new);
         projectRepository.delete(project);
         System.out.println("project was successfully deleted");
-        return "redirect:/blog";
+        return "redirect:/projects";
     }
     private void setDefaultProject(Model model) {
         Project project = new Project();
