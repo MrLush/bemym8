@@ -37,10 +37,10 @@ public class UserDetailsWrapper implements UserDetails {
     public String getPassword() {
         return user.getPassword();
     }
-//TODO change it
+
     @Override
     public String getUsername() {
-        return String.valueOf(this.user.getId());
+        return user.getUsername();
     }
 
     @Override
