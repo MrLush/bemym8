@@ -1,5 +1,6 @@
 package com.bemym8.configs;
 
+import com.bemym8.serv.UserDetailsWrapperService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -64,6 +65,12 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .usersByUsernameQuery("SELECT username, password, active FROM usr WHERE username=?")
                 .authoritiesByUsernameQuery("SELECT u.username, ur.roles FROM usr u INNER JOIN user_role ur ON u.id=ur.user_id WHERE u.username=?");
     }
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return new UserDetailsWrapperService();
+    }
+
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {

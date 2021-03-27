@@ -6,7 +6,9 @@ import com.bemym8.repo.ProjectRepository;
 import com.bemym8.serv.UserDetailsWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +32,7 @@ public class ProjectActionsController {
         System.out.println("Title is " + project.getTitle());
         System.out.println("Short Description is " + project.getShortDescription());
         System.out.println("Body is " + project.getBody());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         System.out.println("Author is " + user.getId());
         project.setAuthorId(user.getId());
         projectRepository.save(project);
