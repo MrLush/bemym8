@@ -5,6 +5,7 @@ import com.bemym8.models.User;
 import com.bemym8.repo.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +25,7 @@ public class ProjectActionsController {
     }
 
     @PostMapping("/projects/add")
-    public String addProjectSubmit(@RequestParam String title, @RequestParam String shortDescription, @RequestParam String body, Model model, Project project, User user) {
+    public String addProjectSubmit(@RequestParam String title, @RequestParam String shortDescription, @RequestParam String body, Model model, Project project, @AuthenticationPrincipal User user) {
         System.out.println("Title is " + project.getTitle());
         System.out.println("Short Description is " + project.getShortDescription());
         System.out.println("Body is " + project.getBody());
