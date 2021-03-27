@@ -4,6 +4,7 @@ import com.bemym8.models.Role;
 import com.bemym8.models.User;
 import com.bemym8.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,9 @@ import java.util.Map;
 
 @Controller
 public class RegistrationController {
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private UserRepository userRepository;
@@ -33,6 +37,7 @@ public class RegistrationController {
         }
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         //TODO Autologin
         return "redirect:/login";

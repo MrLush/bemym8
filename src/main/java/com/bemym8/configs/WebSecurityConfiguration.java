@@ -3,6 +3,7 @@ package com.bemym8.configs;
 import com.bemym8.serv.UserDetailsWrapperService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -24,18 +25,23 @@ import javax.sql.DataSource;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
+@ComponentScan(basePackages = { "com.bemym8.security" })
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private DataSource dataSource;
 
-    @Autowired
-    PasswordEncoder passwordEncoder;
-
+    @Bean
+    public PasswordEncoder encoder() {
+        return new BCryptPasswordEncoder();
+    }
+/*
     @Bean
     public PasswordEncoder getPasswordEncoder(){
         return new BCryptPasswordEncoder(8);
-    }
+    }*/
+
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -46,12 +52,12 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login")
-                .permitAll()
+                    .loginPage("/login")
+                    .permitAll()
                 .and()
-                .logout()
-                .logoutSuccessUrl("/")
-                .permitAll()
+                    .logout()
+                    .logoutSuccessUrl("/")
+                    .permitAll()
                 .and()
                 .csrf().disable();
 
@@ -63,7 +69,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .jdbcAuthentication()
                 .dataSource(dataSource)
                 //TODO change encoder, this is legacy and only for testing
-                .passwordEncoder(NoOpPasswordEncoder.getInstance())
                 .usersByUsernameQuery("SELECT username, password, active FROM usr WHERE username=?")
                 .authoritiesByUsernameQuery("SELECT u.username, ur.roles FROM usr u INNER JOIN user_role ur ON u.id=ur.user_id WHERE u.username=?");
     }
@@ -72,19 +77,20 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     public UserDetailsService userDetailsService() {
         return new UserDetailsWrapperService();
     }
-
+/*
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
+*/
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
 
         authProvider.setUserDetailsService(userDetailsService());
-        //authProvider.setPasswordEncoder(passwordEncoder());
+        authProvider.setPasswordEncoder(encoder());
         return authProvider;
     }
+    
 
 }
