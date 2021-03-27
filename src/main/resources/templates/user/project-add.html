@@ -21,7 +21,6 @@
                     <div class="col-md-9">
                         <div sec:authorize="isAuthenticated()">
                             Authenticated as <span sec:authentication="name"></span>
-                            Authenticated as <span sec:authentication="Id"></span>
                         </div>
                         <input type="text" name="title" th:field="*{title}" placeholder="Enter name of your project" class="form-control"><br>
                         <input type="text" name="shortDescription" th:field="*{shortDescription}" placeholder="Enter short description" class="form-control">
