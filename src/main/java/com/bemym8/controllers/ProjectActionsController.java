@@ -28,13 +28,14 @@ public class ProjectActionsController {
     }
 
     @PostMapping("/projects/add")
-    public String addProjectSubmit(@RequestParam String title, @RequestParam String shortDescription, @RequestParam String body, Model model, Project project, @AuthenticationPrincipal UserDetailsWrapper user) {
+    public String addProjectSubmit(@RequestParam String title, @RequestParam String shortDescription, @RequestParam String body, Model model, Project project) {
         System.out.println("Title is " + project.getTitle());
         System.out.println("Short Description is " + project.getShortDescription());
         System.out.println("Body is " + project.getBody());
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println("Author is " + user.getId());
-        project.setAuthorId(user.getId());
+        System.out.println("Author is " + auth.getName());
+        //TODO change it
+        project.setAuthorId(10);
         projectRepository.save(project);
         System.out.println("New project was successfully added");
         return "redirect:/projects";
