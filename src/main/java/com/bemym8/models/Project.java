@@ -3,6 +3,7 @@ package com.bemym8.models;
 import javax.persistence.*;
 
 @Entity
+@Table
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
