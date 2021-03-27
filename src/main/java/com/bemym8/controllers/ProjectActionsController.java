@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @PreAuthorize("hasAuthority('USER')")
 public class ProjectActionsController {
+
     @Autowired
     private ProjectRepository projectRepository;
 
