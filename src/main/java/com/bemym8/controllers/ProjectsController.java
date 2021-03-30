@@ -34,12 +34,4 @@ public class ProjectsController {
         return "project-details";
     }
 
-    //Answers with JSON below
-    @GetMapping("/projects/JSON/{id}")
-    public Project projectJSON(@RequestParam(value = "id") long id) {
-        if (!projectRepository.existsById(id)){
-            System.out.println("Error: trying to access non-existent project");
-        }
-        return projectRepository.findById(id).orElseThrow(IllegalStateException::new);
-    }
 }
