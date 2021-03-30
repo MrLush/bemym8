@@ -13,7 +13,11 @@ public class ProjectsJSONController {
     @Autowired
     private ProjectRepository projectRepository;
 
-    //Answers with JSON below
+
+    @GetMapping("/projects/JSON/all")
+    public Iterable<Project> projectJSON() {
+        return projectRepository.findAllByOrderByIdAsc();
+    }
     @GetMapping("/projects/JSON")
     public Project projectJSON(@RequestParam(value = "id", defaultValue = "2") Long id) {
         if (!projectRepository.existsById(id)){
