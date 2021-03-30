@@ -64,6 +64,12 @@ public class User {
     public Set<Role> getRoles() {
         return roles;
     }
+    public boolean isAdmin() {
+        if(roles.isEmpty()){
+            return false;
+        }
+        return roles.iterator().next().getAuthority().equals("ADMIN");
+    }
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;

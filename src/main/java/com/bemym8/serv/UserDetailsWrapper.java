@@ -16,6 +16,9 @@ public class UserDetailsWrapper implements UserDetails {
     public Long getId() {
         return this.user.getId();
     }
+    public boolean isAdmin(){
+        return user.isAdmin();
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

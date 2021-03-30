@@ -12,11 +12,4 @@ public class HomePageController {
         model.addAttribute("title","BeMyM8 - Home page");
         return "home";
     }
-/*
-    @GetMapping("/login")
-    public String loginPage(Model model){
-        model.addAttribute("title","BeMyM8 - Login");
-        return "login";
-    }
-*/
 }
