@@ -35,7 +35,7 @@ public class ProjectsController {
     }
 
     //Answers with JSON below
-    @GetMapping("/JSON/projects/{id}")
+    @GetMapping("/projects/JSON/{id}")
     public Project projectJSON(@RequestParam(value = "id") long id) {
         if (!projectRepository.existsById(id)){
             System.out.println("Error: trying to access non-existent project");
