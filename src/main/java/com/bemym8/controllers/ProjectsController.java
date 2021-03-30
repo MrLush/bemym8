@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ProjectsController {
@@ -23,7 +24,7 @@ public class ProjectsController {
     }
 
     @GetMapping("/projects/{id}")
-    public String projectsPage(@PathVariable(value = "id") long id, Model model){
+    public String projectPage(@PathVariable(value = "id") long id, Model model){
         if (!projectRepository.existsById(id)){
             System.out.println("Error: trying to access non-existent project");
             return "redirect:/projects";
@@ -31,5 +32,14 @@ public class ProjectsController {
         Project project = projectRepository.findById(id).orElseThrow(IllegalStateException::new);
         model.addAttribute("project", project);
         return "project-details";
+    }
+
+    //Answers with JSON below
+    @GetMapping("/JSON/projects/{id}")
+    public Project projectJSON(@RequestParam(value = "id") long id) {
+        if (!projectRepository.existsById(id)){
+            System.out.println("Error: trying to access non-existent project");
+        }
+        return projectRepository.findById(id).orElseThrow(IllegalStateException::new);
     }
 }
