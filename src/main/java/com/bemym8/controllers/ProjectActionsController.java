@@ -1,19 +1,26 @@
 package com.bemym8.controllers;
 
 import com.bemym8.models.Project;
+import com.bemym8.models.Role;
 import com.bemym8.models.User;
 import com.bemym8.repo.ProjectRepository;
 import com.bemym8.serv.UserDetailsWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
 @Controller
 @PreAuthorize("hasAuthority('USER')")
@@ -44,14 +51,20 @@ public class ProjectActionsController {
     //TODO add extra security - post belongs to their author
 
     @GetMapping("/projects/{id}/edit")
-    public String projectEdit(@PathVariable(value = "id") long id, Model model){
+    public String projectEdit(@PathVariable(value = "id") long id, Model model, @AuthenticationPrincipal UserDetailsWrapper user){
         Project project = projectRepository.findById(id).orElseThrow(IllegalStateException::new);
+        if (!isEditableByThatUser(user, project)){
+            return "redirect:/projects/{id}";
+        }
         model.addAttribute("project", project);
         return "user/project-edit";
     }
     @PostMapping("/projects/{id}/edit")
-    public String projectEditSubmit(@PathVariable(value = "id") long id, @RequestParam String title, @RequestParam String shortDescription, @RequestParam String body, Model model){
+    public String projectEditSubmit(@PathVariable(value = "id") long id, @RequestParam String title, @RequestParam String shortDescription, @RequestParam String body, Model model, @AuthenticationPrincipal UserDetailsWrapper user){
         Project project = projectRepository.findById(id).orElseThrow(IllegalStateException::new);
+        if (!isEditableByThatUser(user, project)){
+            return "redirect:/projects/{id}";
+        }
         project.setTitle(title);
         project.setShortDescription(shortDescription);
         project.setBody(body);
@@ -62,18 +75,29 @@ public class ProjectActionsController {
     }
 
     @PostMapping("/projects/{id}/remove")
-    public String projectRemove(@PathVariable(value = "id") long id, Model model){
+    public String projectRemove(@PathVariable(value = "id") long id, Model model, @AuthenticationPrincipal UserDetailsWrapper user){
         if (!projectRepository.existsById(id)){
             System.out.println("Error: trying to delete non-existent project");
             return "redirect:/projects";
         }
         Project project = projectRepository.findById(id).orElseThrow(IllegalStateException::new);
+        if (!isEditableByThatUser(user, project)){
+            return "redirect:/projects/{id}";
+        }
         projectRepository.delete(project);
         System.out.println("project was successfully deleted");
         return "redirect:/projects";
     }
+
     private void setDefaultProject(Model model) {
         Project project = new Project();
         model.addAttribute("project", project);
+    }
+    private boolean isEditableByThatUser(UserDetailsWrapper user, Project project){
+        if (user.getId() == project.getAuthorId()){
+            return true;
+        }
+        //TODO wtite else for admin
+        return false;
     }
 }
