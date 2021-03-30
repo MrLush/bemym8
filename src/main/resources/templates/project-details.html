@@ -14,7 +14,7 @@
 <div th:insert="blocks/header :: header"></div>
 <body class="bg-light">
     <main class="ms-sm-auto p-4">
-        <div th:if="${#authorization.expression(principal.id) == project.authorID}">
+        <div th:if="${#authorization.expression('principal.id') == project.authorID}">
             <div class="float-end">
                 <!-- <a th:href="'/projects/' + ${project.id} + '/edit'" class="btn btn-warning btn-sm mb-1">Edit</a><br> -->
                 <a th:href="''+'/edit'" class="btn btn-warning btn-sm mb-1">Edit</a><br>
