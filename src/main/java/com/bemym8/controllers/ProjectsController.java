@@ -23,6 +23,7 @@ public class ProjectsController {
         model.addAttribute("project", project);
         return "projects";
     }
+
     @GetMapping("/projects/{id}")
     public String projectPage(@PathVariable(value = "id") long id, Model model){
         if (!projectRepository.existsById(id)){
@@ -30,20 +31,6 @@ public class ProjectsController {
             return "redirect:/projects";
         }
         Project project = projectRepository.findById(id).orElseThrow(IllegalStateException::new);
-        model.addAttribute("project", project);
-        return "project-details";
-    }
-
-    @GetMapping("/projects/{id}")
-    public String projectPage(@PathVariable(value = "id") long id, Model model, @AuthenticationPrincipal UserDetailsWrapper user){
-        if (!projectRepository.existsById(id)){
-            System.out.println("Error: trying to access non-existent project");
-            return "redirect:/projects";
-        }
-        Project project = projectRepository.findById(id).orElseThrow(IllegalStateException::new);
-        if (isEditableByCurrentUser(user, project)){
-            return "project-details-editable";
-        }
         model.addAttribute("project", project);
         return "project-details";
     }
