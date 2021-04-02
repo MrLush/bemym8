@@ -25,12 +25,17 @@
         </div>
     </div>
     <form method="post">
-        <a class="text-dark display-6 col-md-3 col-lg-2 me-0 px-3" style="text-decoration: none;" href="/">BeMyM8</a><br><br>
+        <a class="text-dark align-middle display-6 col-md-3 col-lg-2 me-0 px-3" style="text-decoration: none;" href="/">BeMyM8</a><br><br>
+        <p class="align-middle mt-2">
+            Create and participate in projects and startups from all over the world and in any field.
+            Seek and find allies, investors and partners
+        </p>
         <p class="h6 float-start mt-2">Email</p>
         <input type="text" name="username" class="form-control" placeholder="" required="" autofocus="">
         <p class="h6 float-start mt-2">Password (6 or more characters)</p>
         <input type="password" id="password"  name="password" class="form-control" placeholder="" required=""><br>
-        <input type="password" id="confirm_password"  name="confirm_password" class="form-control" placeholder="" required=""><br>
+        <input type="password" id="confirm_password"  name="confirm_password" class="form-control" placeholder=""
+               required="" onchange='check_pass();'><br>
         <button class="w-100 btn btn-lg btn-primary" type="submit">Join</button>
         <p class="mt-3 mb-3 text-muted">© 2021</p>
     </form>
