@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class CommunityController {
-    
+
     @Autowired
     private ProjectRepository projectRepository;
 
