@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.Arrays;
+import java.util.Iterator;
+
 @Controller
 public class SupportController {
 
@@ -16,7 +19,10 @@ public class SupportController {
     @GetMapping("/support")
     public String projectsPage(Model model){
         model.addAttribute("title","BeMyM8 - Support");
-        Iterable<Project> project = projectRepository.findAllByOrderByIdAsc();
+
+        // Here is id's of post for page support
+        Iterable<Long> ids = Arrays.asList(6L, 6L);
+        Iterable<Project> project = projectRepository.findAllById(ids);
         model.addAttribute("project", project);
         return "support";
     }

@@ -17,7 +17,7 @@
 
         <div th:each="el : ${project}" class="shadow p-3 mb-5 bg-white rounded">
             <div sec:authorize="isAuthenticated()"><!--'hasAuthority(''ADMIN'')' -->
-                <div th:if="${#request.userPrincipal.principal.id == project.authorId}" class="float-end">
+                <div th:if="${#request.userPrincipal.principal.id == el.authorId}" class="float-end">
                     <a th:href="'/projects/' + ${el.id} + '/edit'" class="btn btn-warning btn-sm mb-1">Edit</a><br>
                     <form method="POST" th:action="'/projects/' + ${el.id} + '/remove'">
                         <button type=submit class="btn btn-danger btn-sm mb-1">Delete</button>
@@ -26,7 +26,6 @@
             </div>
             <h2 th:text="${el.title}"/>
             <div th:utext=${el.body} />
-            <a th:href="'/projects/' + ${el.id}" class="btn btn-lg btn-primary">About The Project »</a>
         </div>
     </main>
 </body>
