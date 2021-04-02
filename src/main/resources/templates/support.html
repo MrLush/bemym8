@@ -27,6 +27,7 @@
             <h2 th:text="${el.title}"/>
             <div th:utext=${el.body} />
         </div>
+        <div th:insert="blocks/footer :: footer"></div>
     </main>
 </body>
 </html>

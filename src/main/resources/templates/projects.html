@@ -25,6 +25,7 @@
             <p class="lead" th:text="${el.shortDescription}"/>
             <a th:href="'/projects/' + ${el.id}" class="btn btn-lg btn-primary">About The Project »</a>
         </div>
+        <div th:insert="blocks/footer :: footer"></div>
     </main>
 </body>
 </html>
