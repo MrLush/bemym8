@@ -17,7 +17,7 @@ public class SearchController {
     @Autowired
     private ProjectRepository projectRepository;
 
-    @GetMapping("/search")
+    @GetMapping("/search/{searchRequest}")
     public String projectsPage(@RequestParam String searchRequest, Model model){
         model.addAttribute("title","BeMyM8 - Search");
         Iterable<Project> project = projectRepository.findByBodyLike(searchRequest);
