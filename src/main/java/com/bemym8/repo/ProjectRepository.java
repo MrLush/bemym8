@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ProjectRepository extends JpaRepository<Project, Long> {
     List<Project> findAllByOrderByIdAsc();
-    List<Project> findAllByOrderByIdAsc2(Iterable<Long> ids);
+    List<Project> findByOrderByIdAsc(Iterable<Long> ids);
     List<Project> findByBodyLike(String body);
 
 }

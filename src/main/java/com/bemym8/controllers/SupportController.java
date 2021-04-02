@@ -22,7 +22,7 @@ public class SupportController {
 
         // Here is id's of post for page support
         Iterable<Long> ids = Arrays.asList(11L, 12L, 13L);
-        Iterable<Project> project = projectRepository.findAllByOrderByIdAsc2(ids);
+        Iterable<Project> project = projectRepository.findByOrderByIdAsc(ids);
         model.addAttribute("project", project);
         return "support";
     }
