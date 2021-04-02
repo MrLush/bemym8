@@ -41,8 +41,11 @@
                             <img class="rounded-circle" src="https://i.imgur.com/RpzrMR2.jpg" width="60" height="60">
                             <div class="d-flex">
                                 <!-- Here should be user logo -->
-                                <!-- Here should be user first and last name --> <!--date,month and year Maria Andrews - -->
-                                <h5 class="d-block font-weight-bold name"  th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm')}"  />
+                                <!-- Here should be user first and last name --> <!--date,month and year -->
+                                <h5 class="d-block font-weight-bold name">
+                                    Maria Andrews -
+                                    <small id="emailHelp" class="form-text text-muted"  th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm')}" />
+                                </h5>
                                 <!-- content -->
                                 <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                             </div>
