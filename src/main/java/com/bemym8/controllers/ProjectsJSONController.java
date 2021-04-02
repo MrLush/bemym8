@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Iterator;
+
 @RestController
 public class ProjectsJSONController {
 
@@ -16,7 +18,16 @@ public class ProjectsJSONController {
 
     @GetMapping("/projects/JSON/all")
     public Iterable<Project> projectJSON() {
-        return projectRepository.findAllByOrderByIdAsc();
+        // Filtering from admins posts
+        Iterable<Project> project = projectRepository.findAllByOrderByIdAsc();
+        Iterator<Project> iter = project.iterator();
+        while(iter.hasNext()) {
+            Project p = iter.next();
+            if (p.getId() == 11 || p.getId() == 12 || p.getId() == 13) {
+                iter.remove();
+            }
+        }
+        return project;
     }
     @GetMapping("/projects/JSON")
     public Project projectJSON(@RequestParam(value = "id", defaultValue = "2") Long id) {

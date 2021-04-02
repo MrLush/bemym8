@@ -24,7 +24,8 @@
         </div>
         <div class="shadow-sm p-3 mb-5 bg-white rounded">
             <h1 th:text="${project.title}"/>
-            <h3 th:text="${project.authorId}"/>
+            <small id="createdBy" class="form-text text-muted">Created by:</small>
+            <small th:text="${project.authorId}" class="form-text text-muted" />
             <div th:utext=${project.shortDescription} />
             <div th:utext=${project.body} />
             <a th:href="'/projects'" class="btn btn-secondary btn-sm">Назад</a>

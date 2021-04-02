@@ -42,4 +42,5 @@ public class RegistrationController {
         //TODO Autologin
         return "redirect:/login";
     }
+
 }
