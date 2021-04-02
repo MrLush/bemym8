@@ -64,7 +64,7 @@
 
                         <div class="bg-white p-2">
                             <div class="d-flex flex-row fs-12">
-                                <div sec:authorize="isAuthenticated()">
+                                <sec:authorize access="isAuthenticated()">
                                     <div class="like p-2 cursor">
                                         <i class="fa fa-thumbs-o-up"></i>
                                         <span class="ml-1">Like</span></div>
@@ -73,7 +73,7 @@
                                         <i class="fa fa-commenting-o"></i>
                                         <span class="ml-1">Comment</span>
                                     </div>
-                                </div>
+                                </sec:authorize>
                                 <div class="like p-2 cursor action-collapse" data-bs-toggle="collapse"
                                      aria-expanded="false" aria-controls="collapse-2" data-bs-target="#collapse-2">
                                     <i class="fa fa-share"></i>
