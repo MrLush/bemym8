@@ -10,6 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
 @Controller
 public class ProjectsController {
 
@@ -20,6 +25,14 @@ public class ProjectsController {
     public String projectsPage(Model model){
         model.addAttribute("title","BeMyM8 - Projects");
         Iterable<Project> project = projectRepository.findAllByOrderByIdAsc();
+        Iterator<Project> iter = project.iterator();
+        while(iter.hasNext()) {
+            Project p = iter.next();
+            if (p.getId() == 6) {
+                iter.remove();
+            }
+        }
+
         model.addAttribute("project", project);
         return "projects";
     }
