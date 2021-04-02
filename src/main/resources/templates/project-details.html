@@ -38,23 +38,13 @@
                 <div class="d-flex justify-content-center row">
                     <div class="d-flex flex-column comment-section" id="myGroup">
                         <div class="d-flex flex-row align-items-start">
-                            <div class="row">
-                                <div class="col-1 d-flex">
-                                    <!-- Here should be user logo -->
-                                    <img class="rounded-circle" src="https://i.imgur.com/RpzrMR2.jpg" width="60" height="60">
-                                </div>
-                                <div class="col-9 d-flex">
-                                    <!-- Here should be user first and last name -->
-                                    <div class="row">
-                                        <div class="col-12 d-flex">
-                                            <h5 class="d-block font-weight-bold name">Maria Andrews</h5>
-                                            <!--date,month and year -->
-                                            <small> - 27 Jan 2020</small>
-                                        </div>
-                                    </div>
-                                    <!-- content -->
-                                    <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                </div>
+                            <img class="rounded-circle" src="https://i.imgur.com/RpzrMR2.jpg" width="60" height="60">
+                            <div class="d-flex">
+                                <!-- Here should be user logo -->
+                                <!-- Here should be user first and last name --> <!--date,month and year -->
+                                <h5 class="d-block font-weight-bold name"  th:text="Maria Andrews - ${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm')}"  />
+                                <!-- content -->
+                                <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                             </div>
                         </div>
 
@@ -62,7 +52,6 @@
 
                         <div class="bg-white p-2">
                             <div class="d-flex flex-row fs-12">
-                                <sec:authorize access="isAuthenticated()">
                                     <div class="like p-2 cursor">
                                         <i class="fa fa-thumbs-o-up"></i>
                                         <span class="ml-1">Like</span></div>
@@ -71,7 +60,6 @@
                                         <i class="fa fa-commenting-o"></i>
                                         <span class="ml-1">Comment</span>
                                     </div>
-                                </sec:authorize>
                                 <div class="like p-2 cursor action-collapse" data-bs-toggle="collapse"
                                      aria-expanded="false" aria-controls="collapse-2" data-bs-target="#collapse-2">
                                     <i class="fa fa-share"></i>
