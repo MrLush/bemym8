@@ -18,6 +18,7 @@ public class SupportController {
 
     @Autowired
     private ProjectRepository projectRepository;
+    private long id ;
 
     @GetMapping("/support")
     public String projectsPage(Model model){
@@ -28,9 +29,8 @@ public class SupportController {
         Iterable<Project> project = projectRepository.findAllById(ids);
         Stream<Project> sorted = StreamSupport.stream(
                 project.spliterator(), false)
-                .sorted((o1, o2)-> o1.getId() == o2.getId()).
-                        collect(Collectors.toList());
-        model.addAttribute("project", project);
+                .sorted((p1, p2) -> ((Long)p1.getId()).compareTo(p2.getId()));
+        model.addAttribute("project", sorted);
         return "support";
     }
 }
