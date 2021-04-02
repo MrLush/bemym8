@@ -21,7 +21,7 @@ public class SupportController {
         model.addAttribute("title","BeMyM8 - Support");
 
         // Here is id's of post for page support
-        Iterable<Long> ids = Arrays.asList(6L, 6L);
+        Iterable<Long> ids = Arrays.asList(6L, 7L);
         Iterable<Project> project = projectRepository.findAllById(ids);
         model.addAttribute("project", project);
         return "support";

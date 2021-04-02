@@ -9,8 +9,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String username ;
-    private String email;
+    private String username;
     private String password;
     private boolean active;
 
@@ -20,6 +19,11 @@ public class User {
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
+
+    private String firstName;
+    private String lastName;
+
+
 
     public Long getId() {
         return id;
@@ -35,14 +39,6 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getPassword() {

@@ -22,10 +22,11 @@ public class ProjectsController {
     public String projectsPage(Model model){
         model.addAttribute("title","BeMyM8 - Projects");
         Iterable<Project> project = projectRepository.findAllByOrderByIdAsc();
+        // Filtering from admins posts
         Iterator<Project> iter = project.iterator();
         while(iter.hasNext()) {
             Project p = iter.next();
-            if (p.getId() == 6) {
+            if (p.getId() == 6 || p.getId() == 7) {
                 iter.remove();
             }
         }
