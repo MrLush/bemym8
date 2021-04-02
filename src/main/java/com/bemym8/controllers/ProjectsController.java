@@ -49,7 +49,7 @@ public class ProjectsController {
         }
         Project project = projectRepository.findById(id).orElseThrow(IllegalStateException::new);
         Optional<User> author = userRepository.findById(project.getAuthorId());
-        model.addAttribute("author", author);
+        model.addAttribute("author", author.get());
         model.addAttribute("project", project);
         return "project-details";
     }
