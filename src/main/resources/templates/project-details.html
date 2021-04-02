@@ -25,6 +25,7 @@
         <div class="shadow-sm p-3 mb-5 bg-white rounded">
             <h1 th:text="${project.title}"/>
             <small id="createdBy" class="form-text text-muted">Created by:</small>
+            <small th:text="${author.username}" class="form-text text-muted" />
             <small th:text="${project.authorId}" class="form-text text-muted" />
             <div th:utext=${project.shortDescription} />
             <div th:utext=${project.body} />

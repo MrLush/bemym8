@@ -1,7 +1,9 @@
 package com.bemym8.controllers;
 
 import com.bemym8.models.Project;
+import com.bemym8.models.User;
 import com.bemym8.repo.ProjectRepository;
+import com.bemym8.repo.UserRepository;
 import com.bemym8.serv.UserDetailsWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -11,12 +13,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Iterator;
+import java.util.Optional;
 
 @Controller
 public class ProjectsController {
 
     @Autowired
     private ProjectRepository projectRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping("/projects")
     public String projectsPage(Model model){
@@ -42,6 +48,8 @@ public class ProjectsController {
             return "redirect:/projects";
         }
         Project project = projectRepository.findById(id).orElseThrow(IllegalStateException::new);
+        Optional<User> author = userRepository.findById(project.getAuthorId());
+        model.addAttribute("author", author);
         model.addAttribute("project", project);
         return "project-details";
     }
