@@ -10,7 +10,7 @@
             integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
             crossorigin="anonymous"></script>
     <link th:href ="@{/css/body.css}" rel="stylesheet">
-    <script type="text/javascript" th:src="@{/js/confirm-password.js}"></script>
+    <script type="text/javascript" th:src="@{/js/register-checking.js}"></script>
 </head>
 <body class="text-center align-middle bg-light" >
 <main class="form-signin" style=" width: 100%; max-width: 330px; padding: 15px; margin: auto;">
@@ -31,7 +31,13 @@
             Seek and find allies, investors and partners
         </p>
         <p class="h6 float-start mt-2">Email</p>
-        <input type="text" name="username" class="form-control" placeholder="" required="" autofocus="">
+        <div class="input-group mb-2 mr-sm-2">
+            <div class="input-group-prepend">
+                <div class="input-group-text">@</div>
+            </div>
+            <input type="text" name="username" class="form-control" placeholder="" required="" autofocus="">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
         <p class="h6 float-start mt-2">Password (6 or more characters)</p>
         <input type="password" id="password"  name="password" class="form-control" placeholder="" required=""><br>
         <input type="password" id="confirm_password"  name="confirm_password" class="form-control" placeholder=""
