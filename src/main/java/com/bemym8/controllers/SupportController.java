@@ -8,11 +8,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class CommunityController {
+public class SupportController {
 
-    @GetMapping("/community")
+    @Autowired
+    private ProjectRepository projectRepository;
+
+    @GetMapping("/support")
     public String projectsPage(Model model){
-        model.addAttribute("title","BeMyM8 - Community");
-        return "community";
+        model.addAttribute("title","BeMyM8 - Support");
+        Iterable<Project> project = projectRepository.findAllByOrderByIdAsc();
+        model.addAttribute("project", project);
+        return "support";
     }
 }
