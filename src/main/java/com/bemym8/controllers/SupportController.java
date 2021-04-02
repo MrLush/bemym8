@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 @Controller
 public class SupportController {
@@ -23,6 +26,10 @@ public class SupportController {
         // Here is id's of post for page support
         Iterable<Long> ids = Arrays.asList(11L, 12L, 13L);
         Iterable<Project> project = projectRepository.findAllById(ids);
+        Stream<Project> sorted = StreamSupport.stream(
+                project.spliterator(), false)
+                .sorted((o1, o2)-> o1.getId() == o2.getId()).
+                        collect(Collectors.toList());
         model.addAttribute("project", project);
         return "support";
     }
