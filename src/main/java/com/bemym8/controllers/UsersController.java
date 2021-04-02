@@ -23,6 +23,5 @@ public class UsersController {
         catch(Exception e){
             throw new IllegalStateException();
         }
-
     }
 }
