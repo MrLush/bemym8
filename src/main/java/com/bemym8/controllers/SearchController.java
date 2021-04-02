@@ -25,7 +25,7 @@ public class SearchController {
         Iterator<Project> iter = project.iterator();
         while(iter.hasNext()) {
             Project p = iter.next();
-            if (p.getId() == 6 || p.getId() == 7|| p.getId() == 11) {
+            if (p.getId() == 11 || p.getId() == 12 || p.getId() == 13) {
                 iter.remove();
             }
         }
