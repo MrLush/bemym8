@@ -21,7 +21,7 @@ public class UsersController {
     public User userJSON(@RequestParam String username) {
         try{ return userRepository.findByUsername(username);}
         catch(Exception e){
-            throw new IllegalStateException;
+            throw new IllegalStateException();
         }
 
     }
