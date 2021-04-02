@@ -26,7 +26,7 @@ public class ProjectsController {
         Iterator<Project> iter = project.iterator();
         while(iter.hasNext()) {
             Project p = iter.next();
-            if (p.getId() == 6 || p.getId() == 7) {
+            if (p.getId() == 6 || p.getId() == 7|| p.getId() == 11) {
                 iter.remove();
             }
         }
