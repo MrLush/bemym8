@@ -29,7 +29,7 @@ public class AccountController {
 
         model.addAttribute("title","BeMyM8 - Account");
         model.addAttribute("user", curUser);
-        return "account";
+        return "user/account";
     }
 
     @PostMapping("/account")
