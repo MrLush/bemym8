@@ -10,6 +10,6 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
 
     List<Project> findByBodyLike(String body);
 
-    List<Project> findAllByBodyContaining(String body);
+    List<Project> findByBodyContaining(String body);
 
 }
