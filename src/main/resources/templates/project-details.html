@@ -20,7 +20,7 @@
 <div th:insert="blocks/header :: header"></div>
 <body class="bg-light">
     <main class="ms-sm-auto p-4">
-        <div sec:authorize="isAuthenticated()"><!--'hasAuthority(''USER'')' -->
+        <div sec:authorize="isAuthenticated()"><!-- ADD 'hasAuthority(''ADMIN'')' -->
             <div th:if="${#request.userPrincipal.principal.id == project.authorId}" class="float-end">
                 <a th:href="'/projects/' + ${project.id} + '/edit'" class="btn btn-warning btn-sm mb-1">Edit</a><br>
                 <form method="POST" th:action="'/projects/' + ${project.id} + '/remove'">
