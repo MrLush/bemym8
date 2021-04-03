@@ -52,7 +52,11 @@
                             </div>
                             <div sec:authorize="isAuthenticated()">
                                 <div sec:authorize="hasAuthority('ADMIN')">
-                                    <a href="/comment/remove/{id}(id=${el.id})" class="close" role="button" aria-label="Close">Link</a>
+                                    <a th:href="/comment/remove/{id}(id=${el.id})">
+                                    <button type="button" class="close" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
