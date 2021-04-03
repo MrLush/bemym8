@@ -50,9 +50,9 @@
                                 <!-- content -->
                                 <div class="card card-body m-1" th:text="${el.content}" />
                             </div>
-                            <div sec:authorize="isAuthenticated()">
-                                <div sec:authorize="hasAuthority('ADMIN')">
-                                    <a th:href="/comment/remove/{id}(id=${el.id})">
+                            <div class="ml-auto" sec:authorize="isAuthenticated()">
+                                <div  sec:authorize="hasAuthority('ADMIN')">
+                                    <a th:href="'/comment/remove/' + ${el.id}">
                                     <button type="button" class="close" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
