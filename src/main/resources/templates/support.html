@@ -16,7 +16,7 @@
     <main class="ms-sm-auto p-4">
 
         <div th:each="el : ${project}" class="shadow p-3 mb-5 bg-white rounded">
-            <div sec:authorize="hasAuthority(''ADMIN'')">
+            <div sec:authorize="hasAuthority('ADMIN')">
                 <div class="float-end">
                     <a th:href="'/projects/' + ${el.id} + '/edit'" class="btn btn-warning btn-sm mb-1">Edit</a><br>
                     <form method="POST" th:action="'/projects/' + ${el.id} + '/remove'">
