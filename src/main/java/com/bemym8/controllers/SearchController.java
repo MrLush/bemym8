@@ -18,7 +18,7 @@ public class SearchController {
     private ProjectRepository projectRepository;
 ///{searchRequest} @RequestParam String searchRequest,
     @GetMapping("/search")
-    public String projectsPage( Model model){
+    public String projectsPage(Model model){
         //Iterable<Project> project = projectRepository.findByBodyLike(searchRequest);
        /* // Filtering from admins posts
         Iterator<Project> iter = project.iterator();
