@@ -2,6 +2,7 @@ package com.bemym8.controllers;
 
 import com.bemym8.models.Project;
 import com.bemym8.models.User;
+import com.bemym8.repo.CommentRepository;
 import com.bemym8.repo.ProjectRepository;
 import com.bemym8.repo.UserRepository;
 import com.bemym8.serv.UserDetailsWrapper;
@@ -23,6 +24,9 @@ public class ProjectsController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private CommentRepository commentRepository;
 
     @GetMapping("/projects")
     public String projectsPage(Model model){

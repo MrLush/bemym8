@@ -11,4 +11,6 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
 
     List<Comment> findByContentLike(String content);
 
+    List<Comment> findByProjectBO(Project projectBO);
+
 }
