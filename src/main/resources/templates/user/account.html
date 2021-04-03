@@ -38,7 +38,7 @@
         <p class="h6 float-start mt-2">First name</p>
         <input type="text" name="firstName" class="form-control" th:value="${user.firstName}">
         <p class="h6 float-start mt-2">Last name</p>
-        <input type="text" name="lastName" class="form-control" th:value="${user.lastName}">
+        <input type="text" name="lastName" class="form-control" th:value="${user.lastName}"><br>
         <button class="w-100 btn btn-lg btn-primary" type="submit">Update</button>
     </form>
     <div th:insert="blocks/footer :: footer"></div>
