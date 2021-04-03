@@ -84,6 +84,7 @@ public class ProjectsController {
         model.addAttribute("project", project);
         return "user/project-edit";
     }
+
     @PostMapping("/projects/{id}/edit")
     public String projectEditSubmit(@PathVariable(value = "id") long id, @RequestParam String title, @RequestParam String shortDescription, @RequestParam String body, Model model, @AuthenticationPrincipal UserDetailsWrapper user){
         Project project = projectRepository.findById(id).orElseThrow(IllegalStateException::new);
