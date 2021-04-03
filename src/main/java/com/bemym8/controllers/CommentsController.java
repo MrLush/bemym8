@@ -9,6 +9,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,8 +42,8 @@ public class CommentsController {
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
-    @PostMapping("remove/{id}")
-    public String projectRemove(@RequestParam long id){
+    @DeleteMapping("projects/{id}")
+    public String projectRemove(@RequestParam(value="id") long id){
         if (!commentRepository.existsById(id)){
             System.out.println("Error: trying to delete non-existent project");
             return "redirect:/projects";
