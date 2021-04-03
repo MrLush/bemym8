@@ -58,11 +58,10 @@
                                 <!-- Here should be user first and last name -->
                                 <!--th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm')}-->
                                 <h5 class="d-block font-weight-bold name" th:text="${el.user_firstName}">
-                                    <h5 class="d-block font-weight-bold name" th:text="${el.user_lastName}">
                                     <small class="form-text text-muted"  th:text="${el.createdTimestamp}" />
                                     <small class="form-text text-muted"  th:text="${#dates.format(#el.createdTimestamp, 'dd-MM-yyyy HH:mm')}" />
                                     <small class="form-text text-muted"  th:text="${#dates.format(el.createdTimestamp, 'dd-MM-yyyy HH:mm')}" />
-                                </h5></h5>
+                                </h5>
                                 <h4 th:text="${el.createdTimestamp}"></h4>
                                 <!-- content -->
                                 <div class="card card-body m-1" th:text="${el.content}" />
