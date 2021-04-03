@@ -60,7 +60,7 @@ public class APIController {
      * @param id - some project id
      * @return - all information of that project wrapped as JSON
      */
-    @GetMapping("/project")
+    @GetMapping("/projects")
     public Project projectJSON(@RequestParam(value = "id", defaultValue = "2") Long id) {
         if (!projectRepository.existsById(id)){
             System.out.println("Error: trying to access non-existent project");
