@@ -1,6 +1,7 @@
 package com.bemym8.models;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table
@@ -16,6 +17,9 @@ public class Comment {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "project_id", referencedColumnName = "id")
     private Project projectBO;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private java.util.Date createdTimestamp;
 
     public long getId() {
         return id;
@@ -47,5 +51,13 @@ public class Comment {
 
     public void setProjectBO(Project projectBO) {
         this.projectBO = projectBO;
+    }
+
+    public Date getCreatedTimestamp() {
+        return createdTimestamp;
+    }
+
+    public void setCreatedTimestamp(Date createdTimestamp) {
+        this.createdTimestamp = createdTimestamp;
     }
 }
