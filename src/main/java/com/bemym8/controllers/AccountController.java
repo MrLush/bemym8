@@ -33,7 +33,7 @@ public class AccountController {
     }
 
     @PostMapping("/account")
-    public String accountPageSubmit(@RequestParam String username, @RequestParam String firstName, @RequestParam String lastName, @RequestParam String body, Model model){
+    public String accountPageSubmit(@RequestParam String username, @RequestParam String firstName, @RequestParam String lastName, Model model){
         try{
             User user = userRepository.findByUsername(username);
             user.setFirstName(firstName);
