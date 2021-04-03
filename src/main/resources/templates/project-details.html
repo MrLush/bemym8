@@ -94,7 +94,7 @@
                         <div id="collapse-2" class="p-2 collapse" data-parent="#myGroup">
                             <div class="d-flex flex-row align-items-start">
                                 <!-- Add here author contacts-->
-                                <i class="fa fa-envelope-o border p-3 rounded mr-1" th:href="mailto:${author.username}"></i>
+                                <i class="fa fa-envelope-o border p-3 rounded mr-1" th:href="'mailto:' + ${author.username}"></i>
                                 <i class="fa fa-linkedin border p-3 rounded mr-1"></i>
                                 <i class="fa fa-telegram border p-3 rounded mr-1"></i>
                                 <i class="fa fa-facebook border p-3 rounded mr-1"></i>
