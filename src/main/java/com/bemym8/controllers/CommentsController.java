@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -38,4 +40,16 @@ public class CommentsController {
         return "redirect:/projects/{id}";
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PostMapping("/comment/remove/{id}")
+    public String projectRemove(@PathVariable(value = "id") long id){
+        if (!commentRepository.existsById(id)){
+            System.out.println("Error: trying to delete non-existent project");
+            return "redirect:/projects";
+        }
+        Comment comment = commentRepository.findById(id).orElseThrow(IllegalStateException::new);
+        commentRepository.delete(comment);
+        System.out.println("project was successfully deleted");
+        return "redirect:/projects";
+    }
 }
