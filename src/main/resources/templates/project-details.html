@@ -52,9 +52,11 @@
                             </div>
                             <div class="float-end" sec:authorize="isAuthenticated()">
                                 <div  sec:authorize="hasAuthority('ADMIN')">
-                                    <a th:href="'/comment/remove?id=' + ${el.id}">
-                                        <button type="button" class="btn-close" aria-label="Close"></button>
-                                    </a>
+                                    <form method="post">
+                                        <a th:href="'/comment/remove?id=' + ${el.id}">
+                                            <button type="submit" class="btn-close" aria-label="Close"></button>
+                                        </a>
+                                    </form>
                                 </div>
                             </div>
                         </div>
