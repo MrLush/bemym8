@@ -54,7 +54,7 @@ public class ProjectsController {
         return "project-details";
     }
 
-    @PreAuthorize("hasAuthority('USER')")
+    @PreAuthorize("hasAnyAuthority('USER','ADMIN')")
     @GetMapping("/projects/add")
     public String addProject(Model model) {
         setDefaultProject(model);
@@ -62,7 +62,7 @@ public class ProjectsController {
         return "user/project-add";
     }
 
-    @PreAuthorize("hasAuthority('USER')")
+    @PreAuthorize("hasAnyAuthority('USER','ADMIN')")
     @PostMapping("/projects/add")
     public String addProjectSubmit(@RequestParam String title, @RequestParam String shortDescription, @RequestParam String body, Model model, Project project, @AuthenticationPrincipal UserDetailsWrapper user) {
         System.out.println("Title is " + project.getTitle());
