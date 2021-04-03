@@ -52,8 +52,9 @@
                             </div>
                             <div class="float-end" sec:authorize="isAuthenticated()">
                                 <div  sec:authorize="hasAuthority('ADMIN')">
-                                    <form method="post">
+                                    <form method="post" action="/comment/remove/">
                                         <a th:href="'/comment/remove?id=' + ${el.id}">
+                                            <input name="id" th:value="${el.id}" style="display:none;">
                                             <button type="submit" class="btn-close" aria-label="Close"></button>
                                         </a>
                                     </form>
