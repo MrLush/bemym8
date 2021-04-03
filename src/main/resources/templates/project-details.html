@@ -52,7 +52,7 @@
                             </div>
                             <div class="float-end" sec:authorize="isAuthenticated()">
                                 <div  sec:authorize="hasAuthority('ADMIN')">
-                                    <a th:href="'/comment/remove/' + ${el.id}">
+                                    <a th:href="'/comment/remove?id=' + ${el.id}">
                                         <button type="button" class="btn-close" aria-label="Close"></button>
                                     </a>
                                 </div>
