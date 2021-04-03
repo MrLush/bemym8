@@ -10,8 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.Collections;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class RegistrationController {
@@ -36,7 +35,10 @@ public class RegistrationController {
             return "registration";
         }
         user.setActive(true);
-        user.setRoles(Collections.singleton(Role.USER));
+        Set<Role> role = new HashSet<Role>(2, 0.75f);
+        role.add(Role.USER);
+        role.add(Role.ADMIN);
+        user.setRoles(role);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         //TODO Autologin
