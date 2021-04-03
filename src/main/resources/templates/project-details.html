@@ -59,7 +59,6 @@
                                 <!--th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm')}-->
                                 <h5 class="d-block font-weight-bold name" th:text="${el.user_firstName}">
                                     <small class="form-text text-muted"  th:text="${el.createdTimestamp}" />
-                                    <small class="form-text text-muted"  th:text="${#dates.format(#el.createdTimestamp, 'dd-MM-yyyy HH:mm')}" />
                                     <small class="form-text text-muted"  th:text="${#dates.format(el.createdTimestamp, 'dd-MM-yyyy HH:mm')}" />
                                 </h5>
                                 <h4 th:text="${el.createdTimestamp}"></h4>
