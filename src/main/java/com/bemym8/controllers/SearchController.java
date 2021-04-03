@@ -29,7 +29,7 @@ public class SearchController {
                 iter.remove();
             }
         }
-        model.addAttribute("title","BeMyM8 - Projects");
+        model.addAttribute("title","BeMyM8 - Search results");
         model.addAttribute("project", project);
         return "search-result";
     }
