@@ -1,5 +1,6 @@
 package com.bemym8.controllers;
 
+import com.bemym8.models.Comment;
 import com.bemym8.models.Project;
 import com.bemym8.models.User;
 import com.bemym8.repo.CommentRepository;
@@ -52,8 +53,10 @@ public class ProjectsController {
             return "redirect:/projects";
         }
         Project project = projectRepository.findById(id).orElseThrow(IllegalStateException::new);
+        Iterable<Comment> comments = commentRepository.findByProjectBO(project);
         Optional<User> author = userRepository.findById(project.getAuthorId());
         model.addAttribute("author", author.get());
+        model.addAttribute("comments", comments);
         model.addAttribute("project", project);
         return "project-details";
     }

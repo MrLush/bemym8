@@ -35,6 +35,14 @@ public class UserDetailsWrapper implements UserDetails {
         return user.getUsername();
     }
 
+    public String getFirstName() {
+        return user.getFirstName();
+    }
+
+    public String getLastName() {
+        return user.getLastName();
+    }
+
     @Override
     public boolean isAccountNonExpired() {
         return user.isActive();

@@ -26,6 +26,8 @@ public class CommentsController {
         Comment comment = new Comment();
         comment.setContent(content);
         comment.setUser_id(user.getId());
+        comment.setUser_firstName(user.getFirstName());
+        comment.setUser_lastName(user.getLastName());
         comment.setCreatedTimestamp(new Date());
         comment.setProjectBO(project);
         commentRepository.save(comment);

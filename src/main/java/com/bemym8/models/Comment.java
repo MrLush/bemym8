@@ -13,6 +13,8 @@ public class Comment {
     @Column(columnDefinition = "TEXT")
     private String content;
     private long user_id;
+    private String user_firstName;
+    private String user_lastName;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "project_id", referencedColumnName = "id")
@@ -55,6 +57,22 @@ public class Comment {
 
     public Date getCreatedTimestamp() {
         return createdTimestamp;
+    }
+
+    public String getUser_firstName() {
+        return user_firstName;
+    }
+
+    public void setUser_firstName(String user_firstName) {
+        this.user_firstName = user_firstName;
+    }
+
+    public String getUser_lastName() {
+        return user_lastName;
+    }
+
+    public void setUser_lastName(String user_lastName) {
+        this.user_lastName = user_lastName;
     }
 
     public void setCreatedTimestamp(Date createdTimestamp) {
