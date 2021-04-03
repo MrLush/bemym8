@@ -22,14 +22,11 @@ public class CommentsController {
 
     @PreAuthorize("hasAuthority('USER')")
     @PostMapping("projects/{id}")
-    public String addProjectSubmit(@RequestParam Long id, @RequestParam String content, Project project, @AuthenticationPrincipal UserDetailsWrapper user) {
+    public String addProjectSubmit(@RequestParam String content, Project project, @AuthenticationPrincipal UserDetailsWrapper user) {
         Comment comment = new Comment();
         comment.setContent(content);
         comment.setUser_id(user.getId());
         comment.setCreatedTimestamp(new Date());
-        if(id != project.getId()){
-            throw new IllegalStateException();
-        }
         comment.setProjectBO(project);
         commentRepository.save(comment);
         System.out.println("New comment was successfully added");
