@@ -41,7 +41,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 //TODO change it projects
-                .antMatchers("/","/projects","/projects/**", "/search", "/search/**","/community","/user","/user/**", "/support", "/registration").permitAll()
+                .antMatchers("/","/projects","/projects/**", "/search", "/search/**", "/api/**","/community","/user","/user/**", "/support", "/registration").permitAll()
                 .antMatchers("/resources/**", "/fa/**", "/css/**", "/js/**", "/images/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
