@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+            crossorigin="anonymous"></script>
+    <link th:href ="@{/css/body.css}" rel="stylesheet">
+    <script type="text/javascript" th:src="@{/js/register-checking.js}"></script>
+</head>
+<div th:insert="blocks/header :: header"></div>
+<body class="text-center align-middle" >
+<main class="form-signin" style=" width: 100%; max-width: 330px; padding: 15px; margin: auto;">
+    <div th:if="${param.error}">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            Incorrect login or password
+        </div>
+    </div>
+    <div th:if="${message}">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <div th:text="${message}"/>
+        </div>
+    </div>
+    <form method="post">
+        <a class="text-dark align-middle display-6 col-md-3 col-lg-2 me-0 px-3" style="text-decoration: none;" href="/">Account</a><br><br>
+        <p class="h6 float-start mt-2">Email</p>
+        <div class="input-group mb-2 mr-sm-2">
+            <div class="input-group-prepend">
+                <div class="input-group-text">@</div>
+            </div>
+            <input type="text" name="username" class="form-control" th:value="${user.username}" style="border-radius: .25rem;">
+        </div>
+        <p class="h6 float-start mt-2">First name</p>
+        <input type="text" name="firstName" class="form-control" th:value="${user.firstName}">
+        <p class="h6 float-start mt-2">Last name</p>
+        <input type="text" name="lastName" class="form-control" th:value="${user.lastName}">
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Update</button>
+    </form>
+    <div th:insert="blocks/footer :: footer"></div>
+</main>
+</body>
+</html>
