@@ -45,7 +45,7 @@
                                 <!-- Here should be user first and last name -->
                                 <h5 class="d-block font-weight-bold name" style="display:inline;">
                                     [[${el.user_firstName}]] [[${el.user_lastName}]]
-                                    <small th:text=" - " class="form-text text-muted" />
+                                    <small class="form-text text-muted" text=" - " />
                                     <small th:text="${#dates.format(el.createdTimestamp, 'dd MMM yyyy')}" class="form-text text-muted" />
                                 </h5>
                                 <!-- content -->
