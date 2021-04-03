@@ -18,11 +18,9 @@ public class UsersController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/user/{username}")
-    public User userJSON(@RequestParam String username) {
-        try{ return userRepository.findByUsername(username);}
-        catch(Exception e){
-            throw new IllegalStateException();
-        }
+    @GetMapping("/user")
+    public User userJSON(@RequestParam(value = "username", defaultValue = "unknown") String username) {
+        User user = userRepository.findByUsername(username);
+        return user;
     }
 }

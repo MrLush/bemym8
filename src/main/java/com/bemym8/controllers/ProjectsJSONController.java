@@ -29,6 +29,7 @@ public class ProjectsJSONController {
         }
         return project;
     }
+
     @GetMapping("/projects/JSON")
     public Project projectJSON(@RequestParam(value = "id", defaultValue = "2") Long id) {
         if (!projectRepository.existsById(id)){
