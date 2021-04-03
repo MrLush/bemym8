@@ -5,12 +5,17 @@ import com.bemym8.models.User;
 import com.bemym8.repo.ProjectRepository;
 import com.bemym8.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @RequestMapping("/api")
 @RestController
@@ -55,12 +60,28 @@ public class APIController {
      * @param id - some project id
      * @return - all information of that project wrapped as JSON
      */
-    @GetMapping("/projects")
+    @GetMapping("/project")
     public Project projectJSON(@RequestParam(value = "id", defaultValue = "2") Long id) {
         if (!projectRepository.existsById(id)){
             System.out.println("Error: trying to access non-existent project");
         }
-        return projectRepository.findById(id).orElseThrow(IllegalStateException::new);
+        Project project = projectRepository.findById(id).orElseThrow(IllegalStateException::new);
+        return project;
     }
 
+    /**
+     * @return - returning some projects, created by admin, for support page
+     */
+    @GetMapping("/support")
+    public Iterable<Project> projectsPage(){
+        // Here is id's of post for page support
+        Iterable<Long> ids = Arrays.asList(11L, 12L, 13L);
+        Iterable<Project> posts = projectRepository.findAllById(ids);
+        List<Project> sorted = StreamSupport.stream(
+                posts.spliterator(), false)
+                .sorted((p1, p2) -> ((Long)p1.getId())
+                        .compareTo(p2.getId()))
+                .collect(Collectors.toList());
+        return posts;
+    }
 }

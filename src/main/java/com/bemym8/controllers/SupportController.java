@@ -8,10 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 @Controller
@@ -19,7 +17,6 @@ public class SupportController {
 
     @Autowired
     private ProjectRepository projectRepository;
-    private long id ;
 
     @GetMapping("/support")
     public String projectsPage(Model model){

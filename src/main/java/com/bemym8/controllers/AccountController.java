@@ -22,7 +22,7 @@ public class AccountController {
     @GetMapping("/account")
     public String accountPage(Model model, @AuthenticationPrincipal UserDetailsWrapper user){
         if (!userRepository.existsById(user.getId())){
-            System.out.println("Error: trying to access non-existent project");
+            System.out.println("Error: trying to access non-existent account");
             return "redirect:/";
         }
         User curUser = userRepository.findByUsername(user.getUsername());
