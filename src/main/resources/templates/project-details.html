@@ -54,9 +54,10 @@
                             <img class="rounded-circle" src="https://i.imgur.com/RpzrMR2.jpg" width="60" height="60">
                             <div>
                                 <!-- Here should be user logo -->
-                                <!-- Here should be user first and last name --> <!--date,month and year -->
+                                <!-- Here should be user first and last name -->
+                                <!--th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm')}-->
                                 <h5 class="d-block font-weight-bold name" th:text="${el.user_id}">
-                                    <small class="form-text text-muted"  th:text="${#dates.format(el.user_id, 'dd MMM yyyy HH:mm')}" />
+                                    <small class="form-text text-muted"  th:text="${el.createdTimestamp}" />
                                 </h5>
                                 <!-- content -->
                                 <div class="card card-body m-1" th:text="${el.content}" />
