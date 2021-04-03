@@ -6,30 +6,35 @@
                 <nav class="my-2 my-md-0 me-md-3">
                     <a class="p-2 text-dark" href="/projects">Projects</a>
                     <a class="p-2 text-dark" href="/community">Community</a>
-                    <a class="p-2 text-dark" href="#">Support</a>
+                    <a class="p-2 text-dark" href="/support">Support</a>
                 </nav>
                 <form class="d-flex me-md-3">
                     <div class="input-group">
-                    <input class="form-control" type="search" placeholder="Type here to search" aria-label="Search"
-                           aria-describedby="basic-addon1">
-                    <button id="basic-addon1" type="submit" class="btn btn-outline-secondary">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
-                        </svg>
-                        <span class="visually-hidden">Button</span>
-                    </button>
+                            <input class="form-control" id="searchRequest" type="search" placeholder="Type here to search" aria-label="Search"
+                                   aria-describedby="basic-addon1">
+                            <button id="btn" class="btn btn-outline-secondary" style="border-radius: .25rem;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85
+                            3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+                                </svg>
+                                <span class="visually-hidden">Button</span>
+                            </button>
+                        <script  th:src="@{/js/searchbar.js}"></script>
                     </div>
                 </form>
                 <div sec:authorize="isAuthenticated()">
-                    <h5 th:inline="text" class="align-items-center fs-4 text-dark mb-0 px-1" >[[${#httpServletRequest.remoteUser}]]</h5>
+                    <span class="p-2" sec:authentication="principal.username"></span>
+                    <!-- <span sec:authentication="principal.id"></span>-->
+
                 </div>
                 <div sec:authorize="!isAuthenticated()">
                     <a class="p-2 text-dark" href="/registration">Join now</a>
                     <a class="btn btn-outline-primary" href="/login">Sign in</a>
                 </div>
                 <div sec:authorize="isAuthenticated()">
+                    <a class="p-2 text-dark" href="/account">Account</a>
                     <form th:action="@{/logout}" method="post">
-                        <input type="submit" value="Exit"/>
+                        <button type="submit" class="btn btn-outline-dark">Exit</button>
                     </form>
                 </div>
             </div>
