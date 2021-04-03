@@ -21,7 +21,7 @@
 <body class="bg-light">
     <main class="ms-sm-auto p-4">
         <div sec:authorize="isAuthenticated()"><!--'hasAuthority(''USER'')' -->
-            <div th:if="${#request.userPrincipal.principal.id == project.authorId or #request.userPrincipal.principal.hasAuthority('ADMIN') }" class="float-end">
+            <div th:if="${#request.userPrincipal.principal.id == project.authorId}" class="float-end">
                 <a th:href="'/projects/' + ${project.id} + '/edit'" class="btn btn-warning btn-sm mb-1">Edit</a><br>
                 <form method="POST" th:action="'/projects/' + ${project.id} + '/remove'">
                     <button type=submit class="btn btn-danger btn-sm mb-1">Delete</button>
