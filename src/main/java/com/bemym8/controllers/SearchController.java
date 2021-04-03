@@ -33,7 +33,7 @@ public class SearchController {
         model.addAttribute("project", project);
         return "search-result";
     }
-    @GetMapping("/search/{searchRequest}")
+    @PostMapping("/search/{searchRequest}")
     public String searchPage2(@RequestParam String searchRequest, Model model){
         //Iterable<Project> project = projectRepository.findByBodyLike(searchRequest);
        /* // Filtering from admins posts
