@@ -42,7 +42,7 @@ public class CommentsController {
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
-    @DeleteMapping("projects/{}/{id}")
+    @DeleteMapping("projects/{project_id}/{id}")
     public String projectRemove(@RequestParam(value="id") long id){
         if (!commentRepository.existsById(id)){
             System.out.println("Error: trying to delete non-existent project");
@@ -51,6 +51,6 @@ public class CommentsController {
         Comment comment = commentRepository.findById(id).orElseThrow(IllegalStateException::new);
         commentRepository.delete(comment);
         System.out.println("project was successfully deleted");
-        return "redirect:/projects";
+        return "redirect:/projects/{project_id}";
     }
 }
