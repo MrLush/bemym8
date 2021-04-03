@@ -41,7 +41,7 @@ public class CommentsController {
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
-    @PostMapping("/comment/remove/{id}")
+    @PostMapping("projects/{id}")
     public String projectRemove(@RequestParam long id){
         if (!commentRepository.existsById(id)){
             System.out.println("Error: trying to delete non-existent project");
