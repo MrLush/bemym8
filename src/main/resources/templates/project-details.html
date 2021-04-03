@@ -56,9 +56,10 @@
                             <div>
                                 <!-- Here should be user logo -->
                                 <!-- Here should be user first and last name -->
-                                <!--th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm')}-->
-                                <h5 class="d-block font-weight-bold name" th:text="${el.user_firstName}" style="display:inline;"></h5>
-                                <small th:text="${el.createdTimestamp}" class="form-text text-muted" />
+                                <h5 class="d-block font-weight-bold name" style="display:inline;">
+                                    [[${el.user_firstName}]]
+                                    <small th:text="${#dates.format(el.createdTimestamp, 'dd MMM yyyy')}" class="form-text text-muted" />
+                                </h5>
                                 <small th:text="${#dates.format(el.createdTimestamp, 'dd MMM yyyy')}" class="form-text text-muted" />
                                 <!-- content -->
                                 <div class="card card-body m-1" th:text="${el.content}" />
