@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -34,7 +35,7 @@ public class SearchController {
         return "search-result";
     }*/
     @GetMapping("/search/{searchRequest}")
-    public String searchPage2(@RequestParam String searchRequest, Model model){
+    public String searchPage2(@PathVariable(value = "searchRequest") String searchRequest, Model model){
         //Iterable<Project> project = projectRepository.findByBodyLike(searchRequest);
        /* // Filtering from admins posts
         Iterator<Project> iter = project.iterator();
