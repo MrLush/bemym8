@@ -1,22 +1,43 @@
 package com.bemym8.controllers;
 
 import com.bemym8.models.Project;
+import com.bemym8.models.User;
 import com.bemym8.repo.ProjectRepository;
+import com.bemym8.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Iterator;
 
+@RequestMapping("/api")
 @RestController
-public class ProjectsJSONController {
+public class APIController {
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private ProjectRepository projectRepository;
 
+    /**
+     * @param username - current username from mobile app
+     * @return - all parameters of user wrapped as JSON
+     */
+    @GetMapping("/user")
+    public User userJSON(@RequestParam(value = "username", defaultValue = "unknown") String username) {
+        //TODO Don't return password
+        User user = userRepository.findByUsername(username);
+        return user;
+    }
 
-    @GetMapping("/projects/JSON/all")
+
+    /**
+     * @return - all projects wrapped as JSON
+     */
+    @GetMapping("/projects/all")
     public Iterable<Project> projectJSON() {
         // Filtering from admins posts
         Iterable<Project> project = projectRepository.findAllByOrderByIdAsc();
@@ -30,11 +51,16 @@ public class ProjectsJSONController {
         return project;
     }
 
-    @GetMapping("/projects/JSON")
+    /**
+     * @param id - some project id
+     * @return - all information of that project wrapped as JSON
+     */
+    @GetMapping("/projects")
     public Project projectJSON(@RequestParam(value = "id", defaultValue = "2") Long id) {
         if (!projectRepository.existsById(id)){
             System.out.println("Error: trying to access non-existent project");
         }
         return projectRepository.findById(id).orElseThrow(IllegalStateException::new);
     }
+
 }
