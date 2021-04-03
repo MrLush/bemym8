@@ -16,24 +16,24 @@ public class SearchController {
 
     @Autowired
     private ProjectRepository projectRepository;
-
+/*
     @GetMapping("/search")
     public String searchPage(Model model){
         //Iterable<Project> project = projectRepository.findByBodyLike(searchRequest);
-       /* // Filtering from admins posts
+       *//* // Filtering from admins posts
         Iterator<Project> iter = project.iterator();
         while(iter.hasNext()) {
             Project p = iter.next();
             if (p.getId() == 11 || p.getId() == 12 || p.getId() == 13) {
                 iter.remove();
             }
-        }*/
+        }*//*
         Iterable<Project> project = projectRepository.findAllByOrderByIdAsc();
         model.addAttribute("title","BeMyM8 - Search results");
         model.addAttribute("project", project);
         return "search-result";
-    }
-    @PostMapping("/search/{searchRequest}")
+    }*/
+    @GetMapping("/search/{searchRequest}")
     public String searchPage2(@RequestParam String searchRequest, Model model){
         //Iterable<Project> project = projectRepository.findByBodyLike(searchRequest);
        /* // Filtering from admins posts
