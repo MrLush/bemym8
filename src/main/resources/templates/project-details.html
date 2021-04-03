@@ -53,7 +53,7 @@
                             </div>
                             <div class="float-end" sec:authorize="isAuthenticated()">
                                 <div  sec:authorize="hasAuthority('ADMIN')">
-                                    <form method="post">
+                                    <form method="delete">
                                         <input name="id" th:value="${el.id}" style="display:none;">
                                         <button type="submit" class="btn-close" aria-label="Close"></button>
                                     </form>
