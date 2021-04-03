@@ -31,7 +31,8 @@
         <div class="shadow-sm p-3 mb-5 bg-white rounded">
             <h1 th:text="${project.title}"/>
             <small id="createdBy" class="form-text text-muted">Created by:</small>
-            <small th:text="${author.username}" class="form-text text-muted" />
+            <small th:text="${author.firstName}" class="form-text text-muted" />
+            <small th:text="${author.lastName}" class="form-text text-muted" />
             <div th:utext=${project.shortDescription} />
             <div th:utext=${project.body} />
             <hr>
@@ -57,6 +58,8 @@
                                 <!-- Here should be user first and last name -->
                                 <!--th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm')}-->
                                 <h5 class="d-block font-weight-bold name" th:text="${el.user_id}">
+                                    <small class="form-text text-muted"  th:text="${el.createdTimestamp}" />
+                                    <small class="form-text text-muted"  th:text="${#dates.format(#el.createdTimestamp, 'dd-MM-yyyy HH:mm')}" />
                                     <small class="form-text text-muted"  th:text="${#dates.format(el.createdTimestamp, 'dd-MM-yyyy HH:mm')}" />
                                 </h5>
                                 <!-- content -->
