@@ -37,7 +37,7 @@ public class RegistrationController {
         user.setActive(true);
         Set<Role> role = new HashSet<Role>(2, 0.75f);
         role.add(Role.USER);
-        role.add(Role.ADMIN);
+        //role.add(Role.ADMIN);
         user.setRoles(role);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);

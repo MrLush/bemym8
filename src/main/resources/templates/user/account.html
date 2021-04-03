@@ -27,13 +27,13 @@
         </div>
     </div>
     <form method="post">
-        <a class="text-dark align-middle display-6 col-md-3 col-lg-2 me-0 px-3" style="text-decoration: none;" href="/">Account</a><br><br>
+        <a class="text-dark align-middle display-6 col-md-3 col-lg-2 me-0 px-3" style="text-decoration: none;" >Account</a><br><br>
         <p class="h6 float-start mt-2">Email</p>
         <div class="input-group mb-2 mr-sm-2">
             <div class="input-group-prepend">
                 <div class="input-group-text">@</div>
             </div>
-            <input type="text" name="username" class="form-control" th:value="${user.username}" style="border-radius: .25rem;">
+            <input type="text" name="username" class="form-control" th:value="${user.username}" style="border-radius: .25rem;" disabled>
         </div>
         <p class="h6 float-start mt-2">First name</p>
         <input type="text" name="firstName" class="form-control" th:value="${user.firstName}">
