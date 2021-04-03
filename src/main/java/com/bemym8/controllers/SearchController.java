@@ -21,13 +21,13 @@ public class SearchController {
     @GetMapping("/search/{searchRequest}")
     public String searchPage2(@PathVariable(value = "searchRequest") String searchRequest, Model model){
         Iterable<Project> project = projectRepository.findByBodyContaining(searchRequest);
-        /*Iterator<Project> iter = project.iterator();
+        Iterator<Project> iter = project.iterator();
         while(iter.hasNext()) {
             Project p = iter.next();
             if (p.getId() == 11 || p.getId() == 12 || p.getId() == 13) {
                 iter.remove();
             }
-        }*/
+        }
         model.addAttribute("title","BeMyM8 - Search results");
         model.addAttribute("project", project);
         return "search-result";
