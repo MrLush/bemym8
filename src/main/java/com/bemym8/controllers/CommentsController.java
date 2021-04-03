@@ -31,11 +31,11 @@ public class CommentsController {
         comment.setUser_id(user.getId());
         comment.setUser_firstName(user.getFirstName());
         comment.setUser_lastName(user.getLastName());
-        comment.setCreatedTimestamp(new Date());
+        comment.setCreatedTimestamp(new Date(System.currentTimeMillis()));
         comment.setProjectBO(project);
         commentRepository.save(comment);
         System.out.println("New comment was successfully added");
-        return "redirect:/projects";
+        return "redirect:/projects/{id}";
     }
 
 }
