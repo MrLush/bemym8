@@ -23,6 +23,9 @@ public class CommentsController {
     @PreAuthorize("hasAuthority('USER')")
     @PostMapping("projects/{id}")
     public String addProjectSubmit(@RequestParam String content, Project project, @AuthenticationPrincipal UserDetailsWrapper user) {
+        if(content == null || content.length() < 10 || content.length() > 1000){
+            return "redirect:/projects";
+        }
         Comment comment = new Comment();
         comment.setContent(content);
         comment.setUser_id(user.getId());
@@ -32,7 +35,7 @@ public class CommentsController {
         comment.setProjectBO(project);
         commentRepository.save(comment);
         System.out.println("New comment was successfully added");
-        return "redirect:/projects/{id}";
+        return "redirect:/projects";
     }
 
 }
