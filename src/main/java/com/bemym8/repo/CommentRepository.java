@@ -9,6 +9,6 @@ import java.util.List;
 public interface CommentRepository extends JpaRepository<Comment, Long> {
     List<Comment> findAllByOrderByIdAsc();
 
-    List<Comment> findByBodyLike(String body);
+    List<Comment> findByContentLike(String content);
 
 }
