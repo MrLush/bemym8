@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -31,7 +30,8 @@ public class CommentsController {
         comment.setUser_id(user.getId());
         comment.setUser_firstName(user.getFirstName());
         comment.setUser_lastName(user.getLastName());
-        comment.setCreatedTimestamp(new Date(System.currentTimeMillis()));
+        //Date date = new Date(String.valueOf(LocalDateTime.now().atZone(ZoneOffset.of("+3"))));
+        comment.setCreatedTimestamp(new Date());
         comment.setProjectBO(project);
         commentRepository.save(comment);
         System.out.println("New comment was successfully added");
